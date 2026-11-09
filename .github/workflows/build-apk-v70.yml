@@ -39,16 +39,16 @@ jobs:
           cat V70-part-00 V70-part-01 V70-part-02 V70-part-03 V70-part-04 > V70-Android-Project.zip
           unzip -tq V70-Android-Project.zip
           unzip -q V70-Android-Project.zip -d source
-          test -f source/TapMaidWidget_Release/settings.gradle.kts
+          test -f source/V70-work/settings.gradle.kts
 
       - name: Build debug APK
-        working-directory: source/TapMaidWidget_Release
+        working-directory: source/V70-work
         run: gradle --no-daemon assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: blue-big-fish-v70-apk
-          path: source/TapMaidWidget_Release/app/build/outputs/apk/debug/app-debug.apk
+          path: source/V70-work/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
